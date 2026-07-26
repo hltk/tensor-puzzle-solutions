@@ -12,8 +12,6 @@ TENSOR PUZZLES
 RULES
 -----
 
-  Quoted from the original repo:
-
   1. These puzzles are about broadcasting. Know this rule.
 
   2. Each puzzle needs to be solved in 1 line (<80 columns) of code.
