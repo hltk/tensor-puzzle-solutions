@@ -12,24 +12,28 @@ TENSOR PUZZLES
 RULES
 -----
 
-  One line per puzzle, under eighty columns.
+  Quoted from the original repo:
 
-  Allowed:
+  1. These puzzles are about broadcasting. Know this rule.
 
-      @                    matrix multiply
-      + - * / % // **      arithmetic
-      == != < > <= >=      comparison
-      .shape
-      a[:j] a[:, None] a[arange(i)]        any indexing
-      arange(i)            given, stands in for a for-loop
-      where(q, a, b)       given, stands in for an if-statement
-      every puzzle already solved above this one
+  2. Each puzzle needs to be solved in 1 line (<80 columns) of code.
 
-  Not allowed: everything else. No view, no reshape, no sum, no take,
-  no squeeze, no tensor, no loops, no branches.
+  3. You are allowed @, arithmetic, comparison, shape, any indexing
+     (e.g. a[:j], a[:, None], a[arange(10)]), and previous puzzle
+     functions.
 
-  Broadcasting supplies the indices, and @ is the only way left to sum
-  an axis away.
+  4. You are not allowed anything else. No view, sum, take, squeeze,
+     tensor.
+
+  5. You can start with these two functions:
+
+         def arange(i: int):
+             "Use this function to replace a for-loop."
+             return torch.tensor(range(i))
+
+         def where(q, a, b):
+             "Use this function to replace an if-statement."
+             return (q * a) + (~q) * b
 
 
 SOLUTIONS
