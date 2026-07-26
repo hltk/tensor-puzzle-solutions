@@ -1,0 +1,60 @@
+TENSOR PUZZLES
+==============
+
+  My solutions to Sasha Rush's Tensor Puzzles.
+
+      https://github.com/srush/Tensor-Puzzles
+
+  Twenty-one numpy functions rebuilt from broadcasting, arithmetic,
+  comparison and indexing. One line each, under eighty columns. No
+  view, no sum, no take, no squeeze, no tensor.
+
+  arange and where are given at the start. After that each puzzle may
+  reuse the ones before it, and most of them do.
+
+
+SETUP
+-----
+
+      uv sync
+
+  Python is pinned to 3.11, because torchtyping wants typeguard < 3.
+
+
+LAYOUT
+------
+
+      puzzles/base.py        arange and where
+      puzzles/pNN_name.py    the spec, then the solution
+
+  Every file carries the reference spec as plain Python loops with the
+  one-line tensor version underneath, so the two read side by side.
+
+
+SOLUTIONS
+---------
+
+   1  ones           arange(i) ** 0
+   2  sum            a[None,:] @ ones(a.shape[0])
+   3  outer          a[:,None] @ b[None, :]
+   4  diag           a[arange(a.shape[0]), arange(a.shape[0])]
+   5  eye            1*( arange(j) == arange(j)[:, None] )
+   6  triu           1*( arange(j) >= arange(j)[:, None] )
+   7  cumsum         a @ triu(a.shape[0])
+   8  diff           a - (arange(i) > 0) * a[arange(i) - 1]
+   9  vstack         where(arange(2)[:, None] == 0, a, b)
+  10  roll           a[(arange(i) + 1) % i]
+  11  flip           a[i - arange(i) - 1]
+  12  compress       ( (cumsum(g * 1) * g) -1 == arange(i)[:, None] )*1 @ v
+  13  pad_to         ( arange(i) == arange(j)[:, None] )*1 @ a
+  14  sequence_mask  values * (arange(values.shape[1]) < length[:, None])
+  15  bincount       (a == arange(j)[:, None])*1 @ ones(a.shape[0])
+  16  scatter_add    (link == arange(j)[:, None])*1 @ values
+  17  flatten        a[arange(i * j) // j, arange(i * j) % j]
+  18  linspace       arange(n) * (j - i) / max(1, n - 1) + i
+  19  heaviside      (a == 0) * b + (a > 0)
+  20  repeat         (arange(d) * 0)[:, None] + a
+  21  bucketize      (v[:, None] >= boundaries)*1 @ ones(boundaries.shape[0])
+
+
+  Written by hand, one at a time. The specs come from the original repo.
