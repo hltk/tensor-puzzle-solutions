@@ -1,0 +1,13 @@
+[project]
+name = "tensor-puzzle-solutions"
+version = "1.0.0"
+description = "Hand-written solutions to Sasha Rush's Tensor Puzzles"
+readme = "README"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "torch>=2.0",
+    "torchtyping>=0.1.5",
+]
+
+[tool.uv]
+package = false
