@@ -6,29 +6,30 @@ TENSOR PUZZLES
       https://github.com/srush/Tensor-Puzzles
 
   Twenty-one numpy functions rebuilt from broadcasting, arithmetic,
-  comparison and indexing. One line each, under eighty columns. No
-  view, no sum, no take, no squeeze, no tensor.
-
-  arange and where are given at the start. After that each puzzle may
-  reuse the ones before it, and most of them do.
+  comparison and indexing.
 
 
-SETUP
+RULES
 -----
 
-      uv sync
+  One line per puzzle, under eighty columns.
 
-  Python is pinned to 3.11, because torchtyping wants typeguard < 3.
+  Allowed:
 
+      @                    matrix multiply
+      + - * / % // **      arithmetic
+      == != < > <= >=      comparison
+      .shape
+      a[:j] a[:, None] a[arange(i)]        any indexing
+      arange(i)            given, stands in for a for-loop
+      where(q, a, b)       given, stands in for an if-statement
+      every puzzle already solved above this one
 
-LAYOUT
-------
+  Not allowed: everything else. No view, no reshape, no sum, no take,
+  no squeeze, no tensor, no loops, no branches.
 
-      puzzles/base.py        arange and where
-      puzzles/pNN_name.py    the spec, then the solution
-
-  Every file carries the reference spec as plain Python loops with the
-  one-line tensor version underneath, so the two read side by side.
+  Broadcasting supplies the indices, and @ is the only way left to sum
+  an axis away.
 
 
 SOLUTIONS
@@ -55,6 +56,3 @@ SOLUTIONS
   19  heaviside      (a == 0) * b + (a > 0)
   20  repeat         (arange(d) * 0)[:, None] + a
   21  bucketize      (v[:, None] >= boundaries)*1 @ ones(boundaries.shape[0])
-
-
-  Written by hand, one at a time. The specs come from the original repo.
