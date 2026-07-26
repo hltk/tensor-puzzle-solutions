@@ -5,8 +5,8 @@ TENSOR PUZZLES
 
       https://github.com/srush/Tensor-Puzzles
 
-  Twenty-one numpy functions rebuilt from broadcasting, arithmetic,
-  comparison and indexing.
+  Tensor Puzzles are 21 puzzles. Each asks you to reimplement one
+  function in the NumPy standard library without magic.
 
 
 RULES
