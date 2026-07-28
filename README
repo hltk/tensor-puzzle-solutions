@@ -58,3 +58,17 @@ SOLUTIONS
   19  heaviside      (a == 0) * b + (a > 0)
   20  repeat         (arange(d) * 0)[:, None] + a
   21  bucketize      (v[:, None] >= boundaries)*1 @ ones(boundaries.shape[0])
+
+
+BONUS
+-----
+
+  Extra puzzles in the same style, beyond the original 21.
+
+  None of the 21 produce an order statistic - every reduction there is a
+  sum in disguise. So argmax needs a comparison matrix to mark the maxima
+  and a prefix sum to pick the first of them, which is also what keeps it
+  correct when the largest value appears more than once.
+
+  22  argmax
+        sum((cumsum(((a[:, None] < a) * 1 @ a ** 0 == 0) * 1) == 0) * 1)
