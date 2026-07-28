@@ -63,14 +63,12 @@ SOLUTIONS
 BONUS
 -----
 
-  Extra puzzles, not part of the original 21. Mine, in the same format:
-  one standard library function, reimplemented from the same toolbox.
+  Below are extra puzzles, not part of the original 21. They use the
+  same format: one standard library function, reimplemented from the
+  same toolbox.
 
-  Added because the 21 leave obvious gaps. Nothing in them sorts, ranks
-  or takes a max, and nothing broadcasts past two dimensions.
-
-  Rules 1, 3 and 4 still hold. Rule 2 does not, since a few of these
-  need two or three lines.
+  The requirements are relaxed for these: some need more than one
+  line to remain legible.
 
   22  argmax
       sum((cumsum(((a[:, None] < a) * 1 @ a ** 0 == 0) * 1) == 0) * 1)
