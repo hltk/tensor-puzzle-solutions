@@ -63,13 +63,14 @@ SOLUTIONS
 BONUS
 -----
 
-  Extra puzzles in the same style, beyond the original 21.
+  Extra puzzles, not part of the original 21. Mine, in the same format:
+  one standard library function, reimplemented from the same toolbox.
 
-  None of the 21 produce an order statistic - every reduction there is a
-  sum in disguise. So argmax needs a comparison matrix to mark the maxima
-  and a prefix sum to pick the first of them, which is also what keeps it
-  correct when the largest value appears more than once. cdist is the
-  first one here that broadcasts into three dimensions.
+  Added because the 21 leave obvious gaps. Nothing in them sorts, ranks
+  or takes a max, and nothing broadcasts past two dimensions.
+
+  Rules 1, 3 and 4 still hold. Rule 2 does not, since a few of these
+  need two or three lines.
 
   22  argmax
         sum((cumsum(((a[:, None] < a) * 1 @ a ** 0 == 0) * 1) == 0) * 1)
