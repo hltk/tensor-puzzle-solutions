@@ -73,5 +73,11 @@ BONUS
   need two or three lines.
 
   22  argmax
-        sum((cumsum(((a[:, None] < a) * 1 @ a ** 0 == 0) * 1) == 0) * 1)
+      sum((cumsum(((a[:, None] < a) * 1 @ a ** 0 == 0) * 1) == 0) * 1)
   23  cdist          (a[:, None] - b) ** 2 @ ones(a.shape[1])
+  24  argsort
+      x = a[:, None] > a
+      y = (a[:, None] == a) * (1 - triu(a.shape[0]))
+      ((x + y) @ a ** 0 == arange(a.shape[0])[:, None])*1 @ arange(a.shape[0])
+  25  repeat_interleave
+      v[(cumsum(c) <= arange(sum(c))[:, None])*1 @ ones(c.shape[0])]
