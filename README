@@ -68,7 +68,9 @@ BONUS
   None of the 21 produce an order statistic - every reduction there is a
   sum in disguise. So argmax needs a comparison matrix to mark the maxima
   and a prefix sum to pick the first of them, which is also what keeps it
-  correct when the largest value appears more than once.
+  correct when the largest value appears more than once. cdist is the
+  first one here that broadcasts into three dimensions.
 
   22  argmax
         sum((cumsum(((a[:, None] < a) * 1 @ a ** 0 == 0) * 1) == 0) * 1)
+  23  cdist          (a[:, None] - b) ** 2 @ ones(a.shape[1])
