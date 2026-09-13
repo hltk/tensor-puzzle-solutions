@@ -5,12 +5,14 @@ TENSOR PUZZLES
 
       https://github.com/srush/Tensor-Puzzles
 
-  Tensor Puzzles are 21 puzzles. Each asks you to reimplement one
-  function in the NumPy standard library without magic.
+  Tensor Puzzles are 21 puzzles where each asks you to reimplement one
+  function in the NumPy standard library.
 
 
 RULES
 -----
+
+These are the rules of the challenge:
 
   1. These puzzles are about broadcasting. Know this rule.
 
@@ -62,13 +64,6 @@ SOLUTIONS
 
 BONUS
 -----
-
-  Below are extra puzzles, not part of the original 21. They use the
-  same format: one standard library function, reimplemented from the
-  same toolbox.
-
-  The requirements are relaxed for these: some need more than one
-  line to remain legible.
 
   22  argmax
       sum((cumsum(((a[:, None] < a) * 1 @ a ** 0 == 0) * 1) == 0) * 1)
